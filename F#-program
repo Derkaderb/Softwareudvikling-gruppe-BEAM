@@ -1,0 +1,60 @@
+open System
+open System.IO
+
+(*giver et randomttal*)
+let ran_tal ()=
+     let rand = System.Random()
+     let tal_list = [1; 2; 3; 4; 5; 6; 7; 8; 9]
+     let x = tal_list.[rand.Next(tal_list.Length)]
+     x
+
+let question (x, y, tegn:string)=
+     System.Console.Write("\nHvad er "+ string(x)+tegn+ string(y)+" ? : \n" )
+
+(*chekker om det er korrekt*)
+let chek (anw:int) =
+     let bruger_anw = int(System.Console.ReadLine())
+     if bruger_anw = anw 
+         then System.Console.Write("\n korrekt!! \n")
+     else System.Console.Write("\nDesværre det korrekte svar er " + string(anw)+"\n")
+
+(*operationer*)
+let plus(x:int,y:int)=
+     let anw = x+y
+     let tegn = " + "
+     question(x, y, tegn)
+     chek(anw)
+
+let minus(x:int,y:int)=
+     let anw = x-y
+     let tegn = " - "
+     question(x, y, tegn)
+     chek(anw)
+
+let gange(x:int,y:int)=
+     let anw = x*y
+     let tegn = " * "
+     question(x, y, tegn)
+     chek(anw)
+
+
+let div(x:int,y:int)=
+     let anw = x/y
+     let tegn = " / "
+     question(x, y, tegn)
+     chek(anw)
+
+
+
+
+(*giver en random operation*)
+let ran_operation ()=
+     let rand = System.Random()
+     let operation_list = [plus; minus; gange; div]
+     let y = operation_list.[rand.Next(operation_list.Length)]
+     y(ran_tal(),ran_tal())
+
+let main()=
+     ran_operation()
+
+main()
